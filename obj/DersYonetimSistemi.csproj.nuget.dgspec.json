@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj": {}
+    "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj": {
+    "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj",
+        "projectUniqueName": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj",
         "projectName": "DersYonetimSistemi",
-        "projectPath": "C:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj",
+        "projectPath": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\DersYonetimSistemi.csproj",
         "packagesPath": "C:\\Users\\Nur Efşan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\obj\\",
+        "outputPath": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nur Efşan\\AppData\\Roaming\\NuGet\\NuGet.Config",

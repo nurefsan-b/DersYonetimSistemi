@@ -166,3 +166,4 @@ c:\Users\Nur Efşan\Desktop\DersYonetimSistemi\bin\Debug\net8.0\runtimes\browser
 c:\Users\Nur Efşan\Desktop\DersYonetimSistemi\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 c:\Users\Nur Efşan\Desktop\DersYonetimSistemi\obj\Debug\net8.0\DersYonetimSistemi.csproj.AssemblyReference.cache
 c:\Users\Nur Efşan\Desktop\DersYonetimSistemi\obj\Debug\net8.0\DersYone.9BAC9A2D.Up2Date
+c:\Users\Nur Efşan\Desktop\DersYonetimSistemi\obj\Debug\net8.0\DersYonetimSistemi.sourcelink.json
