@@ -1,0 +1,33 @@
+@model DersYonetimSistemi.Models.Entity.Ogrenci
+
+@{  
+    Layout = "OgrenciLayout";
+    ViewData["Title"] = "Bilgi Güncelleme";
+}
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <form method="post" asp-action="UpdateInfo" class="mt-4">
+        <div class="form-group">
+            <label for="Ad">Ad</label>
+            <input type="text" class="form-control" id="Ad" name="Ad" value="@Model.Ad" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Soyad">Soyad</label>
+            <input type="text" class="form-control" id="Soyad" name="Soyad" value="@Model.Soyad" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Sifre">Şifre</label>
+            <input type="password" class="form-control" id="Sifre" name="Sifre" value="@Model.Sifre" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Bilgileri Güncelle</button>
+    </form>
+</div>

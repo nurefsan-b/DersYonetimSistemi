@@ -1,0 +1,46 @@
+@{
+    Layout = "AkademisyenLayout";
+    model DersYonetimSistemi.Models.Entity.Akademisyen
+}
+
+<h2>Hoş Geldiniz, @Model.Ad @Model.Soyad</h2>
+
+<h3>Akademisyen Bilgiler</h3>
+<table class="table" border ="1">
+    <thead>
+        <tr>
+            <th>Akademisyen Adı</th>
+            <th>Akademisyen Soyadı</th>
+
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>@Model.Ad</td>
+                <td>@Model.Soyad</td>
+            </tr>
+    </tbody>
+</table>
+<h4>Öğrencileriniz ve Seçtikleri Dersler:</h4>
+<table class="table" border ="1">
+    <thead>
+        <tr>
+            <th>Öğrenci Adı</th>
+            <th>Öğrenci Soyadı</th>
+            <th>Ders Adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ogrenci in Model.Ogrencis)
+        {
+            foreach (var dersSecimi in ogrenci.OgrenciDersSecimis)
+            {
+                <tr>
+                    <td>@ogrenci.Ad</td>
+                    <td>@ogrenci.Soyad</td>
+                    <td>@dersSecimi.Ders.DersAd</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

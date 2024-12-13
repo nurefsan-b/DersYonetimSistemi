@@ -1,0 +1,50 @@
+@model DersYonetimSistemi.Models.Entity.Ogrenci
+
+@{
+    Layout = "OgrenciLayout";
+    ViewData["Title"] = "Öğrenci Anasayfası";
+}
+
+
+<div class="container mt-4">
+    <h1>Hoşgeldiniz, @Model.Ad @Model.Soyad</h1>
+
+    <h3>Öğrenci Bilgileri</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+                <th>Akademisyen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Ad</td>
+                <td>@Model.Soyad</td>
+                <td>@Model.Email</td>
+                <td>@Model.Akademisyen?.Ad @Model.Akademisyen?.Soyad</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Katıldığınız Dersler</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ders Adı</th>
+                <th>Ders Kodu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dersSecimi in Model.OgrenciDersSecimis)
+            {
+                <tr>
+                    <td>@dersSecimi.Ders.DersAd</td>
+                    <td>@dersSecimi.Ders.DersKod</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

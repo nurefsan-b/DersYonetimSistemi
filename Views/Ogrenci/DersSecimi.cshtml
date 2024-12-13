@@ -1,0 +1,21 @@
+@model DersYonetimSistemi.Models.Entity.Ogrenci
+
+@{  
+    Layout = "OgrenciLayout";
+    ViewData["Title"] = "Ders Seçimi";
+}
+
+<h1>Ders Seçimi</h1>
+
+<form method="post" action="@Url.Action("DersSecimi", "Ogrenci", new { ogrenciId = Model.OgrenciId })">
+    <div class="form-group">
+        <label for="dersler">Ders Seçin</label>
+        <select class="form-control" id="dersler" name="dersler" multiple>
+            @foreach (var ders in ViewBag.Dersler)
+            {
+                <option value="@ders.DersId">@ders.DersAd</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Ders Seç</button>
+</form>
