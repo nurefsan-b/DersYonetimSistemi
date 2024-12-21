@@ -29,22 +29,4 @@
         </tbody>
     </table>
 
-    <h3>Katıldığınız Dersler</h3>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Ders Adı</th>
-                <th>Ders Kodu</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var dersSecimi in Model.OgrenciDersSecimis)
-            {
-                <tr>
-                    <td>@dersSecimi.Ders.DersAd</td>
-                    <td>@dersSecimi.Ders.DersKod</td>
-                </tr>
-            }
-        </tbody>
-    </table>
 </div>

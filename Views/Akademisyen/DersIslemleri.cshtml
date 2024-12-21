@@ -1,15 +1,62 @@
-@{
-    Layout = "AkademisyenLayout";
-    model DersYonetimSistemi.Models.Entity.Akademisyen
-}
+@model IEnumerable<DersYonetimSistemi.Models.Entity.OgrenciDersSecimi>
 
-<h2>Ders İşlemleri</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Ders Adı</th>
-            <th>Ders Kodu</th>
-        </tr>
-    </thead>
-</table>
+    @{
+        Layout = "AkademisyenLayout";
+        ViewData["Title"] = "Ders İşlemleri";
+    }
+    
+    <h2>Ders İşlemleri</h2>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Öğrenci Adı</th>
+                <th>Öğrenci Soyadı</th>
+                <th>Ders Adı</th>
+                <th>Durum</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var dersSecimi in Model.Where(d=>d.Onay==true))
+                {
+                    <tr>
+                        <td>@(dersSecimi.Ogrenci?.Ad )</td>
+                        <td>@(dersSecimi.Ogrenci?.Soyad )</td>
+                        <td>@(dersSecimi.Ders?.DersAd)</td>
+                        <td>
+                            @if (dersSecimi.Onay == true)
+                            {
+                                <span class="badge badge-warning">Onay Bekliyor</span>
+                            }
+                            else if (dersSecimi.Onay == false)
+                            {
+                                <span class="badge badge-danger">Reddedildi</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-success">Onaylandı</span>
+                            }
+                        </td>
+                        <td>
+                            @if (dersSecimi.Onay == true)
+                            {
+                                <a href="@Url.Action("Onayla", "Akademisyen", new { secimId = dersSecimi.SecimID, onayDurumu = true })" 
+                                   class="btn btn-success btn-sm">Onayla</a>
+                                <a href="@Url.Action("Onayla", "Akademisyen", new { secimId = dersSecimi.SecimID, onayDurumu = false })" 
+                                   class="btn btn-danger btn-sm">Reddet</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">Henüz ders seçimi talebi bulunmamaktadır.</td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -1,28 +1,30 @@
+@model DersYonetimSistemi.Models.Entity.Akademisyen
+
 @{
     Layout = "AkademisyenLayout";
-    model DersYonetimSistemi.Models.Entity.Akademisyen
+    ViewData["Title"] = "Akademisyen Sayfası";
 }
 
 <h2>Hoş Geldiniz, @Model.Ad @Model.Soyad</h2>
 
 <h3>Akademisyen Bilgiler</h3>
-<table class="table" border ="1">
+<table class="table" border="1">
     <thead>
         <tr>
             <th>Akademisyen Adı</th>
             <th>Akademisyen Soyadı</th>
-
         </tr>
     </thead>
     <tbody>
-            <tr>
-                <td>@Model.Ad</td>
-                <td>@Model.Soyad</td>
-            </tr>
+        <tr>
+            <td>@Model.Ad</td>
+            <td>@Model.Soyad</td>
+        </tr>
     </tbody>
 </table>
-<h4>Öğrencileriniz ve Seçtikleri Dersler:</h4>
-<table class="table" border ="1">
+
+<h4>Öğrenci Ders Seçimleri</h4>
+<table class="table" border="1">
     <thead>
         <tr>
             <th>Öğrenci Adı</th>
@@ -30,17 +32,40 @@
             <th>Ders Adı</th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var ogrenci in Model.Ogrencis)
         {
-            foreach (var dersSecimi in ogrenci.OgrenciDersSecimis)
+            @foreach (var dersSecimi in ogrenci.OgrenciDersSecimis
+                .Where(d => d.AkademisyenID == Model.AkademisyenID))
             {
                 <tr>
                     <td>@ogrenci.Ad</td>
                     <td>@ogrenci.Soyad</td>
                     <td>@dersSecimi.Ders.DersAd</td>
+                    <td>
+                        @if (dersSecimi.Onay == true)
+                        {
+                            <span class="badge bg-warning">Başvuru Sürecinde</span>
+                        }
+                        else if (dersSecimi.Onay == false)
+                        {
+                            <span class="badge bg-danger">Reddedildi</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Onaylandı</span>
+                        }
+                    </td>
                 </tr>
             }
         }
+        @if (!Model.Ogrencis.Any(o => o.OgrenciDersSecimis.Any(d => d.AkademisyenID == Model.AkademisyenID)))
+        {
+            <tr>
+                <td colspan="4" class="text-center">Henüz ders seçimi bulunmamaktadır.</td>
+            </tr>
+        }
     </tbody>
+       
 </table>

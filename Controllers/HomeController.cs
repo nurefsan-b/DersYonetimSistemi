@@ -3,69 +3,60 @@ using Microsoft.AspNetCore.Mvc;
 using DersYonetimSistemi.Models;
 using DersYonetimSistemi.Models.Entity;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.Extensions.Logging;
 
-
-namespace DersYonetimSistemi.Controllers;
-
-public class HomeController : Controller
+namespace DersYonetimSistemi.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly Proje2BirContext _context;
-
-    public HomeController(ILogger<HomeController> logger, Proje2BirContext context)
+    public class HomeController : Controller
     {
-        _logger = logger;
-        _context = context;
-    }
+        private readonly ILogger<HomeController> _logger;
+        private readonly ProjeİkiBirContext _context;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    [HttpPost]
-        public async Task<IActionResult> Index(string Email, string password)
+        public HomeController(ILogger<HomeController> logger, ProjeİkiBirContext context)
         {
-            var ogrenci = await _context.Ogrencis
-                .Include(s => s.Akademisyen)
-                .Include(s => s.OgrenciDersSecimis)
-                .ThenInclude(sc => sc.Ders)
-                .FirstOrDefaultAsync(s => s.Email == Email && s.Sifre == password);
-            
-            var akademisyen = await _context.Akademisyens
-        .Include(i => i.Ogrencis)  
-        .ThenInclude(i => i.OgrenciDersSecimis)  
-        .ThenInclude(od => od.Ders)  
-        .FirstOrDefaultAsync(a => a.Email == Email && a.Sifre == password); 
-            if (ogrenci != null)
+            _logger = logger;
+            _context = context;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(string Email, int password)
+        {
+            try
             {
-                return RedirectToAction("Anasayfa", "Ogrenci", new { ogrenciId = ogrenci.OgrenciId });
+                // Check Ogrenci
+                var ogrenci = await _context.Ogrencis
+                    .Include(o => o.Akademisyen)
+                    .FirstOrDefaultAsync(o => o.Email == Email && o.Sifre == password);
+
+                if (ogrenci != null)
+                {
+                    return RedirectToAction("Anasayfa", "Ogrenci", new { ogrenciId = ogrenci.OgrenciID });
+                }
+
+                // Check Akademisyen
+                var akademisyen = await _context.Akademisyens
+                    .FirstOrDefaultAsync(a => a.Email == Email && a.Sifre == password);
+
+                if (akademisyen != null)
+                {
+                    return RedirectToAction("Anasayfa", "Akademisyen", new { AkademisyenId = akademisyen.AkademisyenID });
+                }
+
+                TempData["ErrorMessage"] = "Geçersiz email veya şifre";
+                return View();
             }
-            else if(akademisyen != null)
+            catch (Exception ex)
             {
-                return RedirectToAction("Anasayfa", "Akademisyen", new { akademisyenId = akademisyen.AkademisyenId});
-            }
-            else 
-            {
-            ViewBag.Error = "Invalid login attempt.";
-            return View();
+                _logger.LogError(ex, "Login hatası");
+                TempData["ErrorMessage"] = "Bir hata oluştu";
+                return View();
             }
         }
 
-    public IActionResult Welcome()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

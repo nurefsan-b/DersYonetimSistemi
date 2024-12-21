@@ -1,25 +1,29 @@
-﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 
-namespace DersYonetimSistemi.Models.Entity;
-
-public partial class Akademisyen
+namespace DersYonetimSistemi.Models.Entity
 {
-    public int AkademisyenId { get; set; }
+    public class Akademisyen
+    {
+        [Key]
+        [Column("AkademisyenID")]
+        public int AkademisyenID { get; set; }
 
-    public string? Ad { get; set; }
+        [Column("Ad")]
+        public string? Ad { get; set; }
 
-    public string? Soyad { get; set; }
+        [Column("Soyad")]
+        public string? Soyad { get; set; }
 
-    public string? Unvan { get; set; }
+        [Column("Email")]
+        public string Email { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
+        [Column("Sifre")]
+        public int Sifre { get; set; } 
 
-    public string Sifre { get; set; } = null!;
-
-    public int? DersId { get; set; }
-
-    public virtual Ders? Ders { get; set; }
-
-    public virtual ICollection<Ogrenci> Ogrencis { get; set; } = new List<Ogrenci>();
+        // Navigation properties
+         public ICollection<Ogrenci> Ogrencis { get; set; } = new List<Ogrenci>();
+        public virtual ICollection<Ders> Dersler { get; set; } = new List<Ders>();
+    }
 }

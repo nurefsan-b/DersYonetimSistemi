@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dycZE2lDZyjJrgJfiCb7EfFkYWryM+xDH/MbJ0x0mPY=",
+  "Hash": "CH3KrP2nvKE1F8PjWpzD/WXUWACDZge7qDuEjW+d/TM=",
   "Source": "DersYonetimSistemi",
   "BasePath": "_content/DersYonetimSistemi",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\wwwroot\\images\\university_logo.png",
+      "SourceId": "DersYonetimSistemi",
+      "SourceType": "Discovered",
+      "ContentRoot": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\wwwroot\\",
+      "BasePath": "_content/DersYonetimSistemi",
+      "RelativePath": "images/university_logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\university_logo.png"
     },
     {
       "Identity": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\wwwroot\\js\\site.js",

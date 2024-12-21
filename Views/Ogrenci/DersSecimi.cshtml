@@ -7,15 +7,50 @@
 
 <h1>Ders Seçimi</h1>
 
-<form method="post" action="@Url.Action("DersSecimi", "Ogrenci", new { ogrenciId = Model.OgrenciId })">
+<form method="post" action="@Url.Action("DersSecimi", "Ogrenci", new { ogrenciId = Model.OgrenciID })">
     <div class="form-group">
         <label for="dersler">Ders Seçin</label>
-        <select class="form-control" id="dersler" name="dersler" multiple>
+        <select class="form-control" id="dersler" name="dersID" multiple>
             @foreach (var ders in ViewBag.Dersler)
             {
-                <option value="@ders.DersId">@ders.DersAd</option>
+                <option value="@ders.DersID">@ders.DersAd</option>
             }
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Ders Seç</button>
+    
+<h3>Ders Seçimi</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ders Adı</th>
+            <th>Ders Kodu</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dersSecimi in Model.OgrenciDersSecimis)
+        {
+            <tr>
+                <td>@dersSecimi.Ders.DersAd</td>
+                <td>@dersSecimi.Ders.DersKod</td>
+                <td>
+                    @if (dersSecimi.Onay==true)
+                    {
+                        <span>Başvuru Sürecinde</span>
+                    }
+                    else if (dersSecimi.Onay == false)
+                    {
+                        <span>Ders Reddedildi</span>
+                    }
+                    else
+                    {
+                        <span>Ders Onaylandı</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 </form>

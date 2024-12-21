@@ -1,5 +1,3 @@
-@model DersYonetimSistemi.Models.Entity.Akademisyen
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,16 +14,16 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Anasayfa", "Akademisyen", new { akademisyenId = Model.AkademisyenId })">Ana Sayfa</a>
+                        <a class="nav-link" href="@Url.Action("Anasayfa", "Akademisyen", new { AkademisyenId = ViewBag.AkademisyenId })">Ana Sayfa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("BilgiGuncelleme", "Akademisyen", new { akademisyenId = Model.AkademisyenId })">Bilgi Güncelle</a>
+                        <a class="nav-link" href="@Url.Action("BilgiGuncelleme", "Akademisyen", new { AkademisyenId = ViewBag.AkademisyenId })">Bilgi Güncelle</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("DersIslemleri", "Akademisyen", new { akademisyenId = Model.AkademisyenId })">Ders İşlemleri</a>
+                        <a class="nav-link" href="@Url.Action("DersIslemleri", "Akademisyen", new { AkademisyenId =ViewBag.AkademisyenId })">Ders İşlemleri</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Logout", "Home")">Çıkış Yap</a>
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">Çıkış Yap</a>
                     </li>
                 </ul>
             </div>

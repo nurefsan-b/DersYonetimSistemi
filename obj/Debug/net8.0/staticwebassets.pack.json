@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\wwwroot\\images\\university_logo.png",
+      "PackagePath": "staticwebassets\\images\\university_logo.png"
+    },
+    {
       "Id": "c:\\Users\\Nur Efşan\\Desktop\\DersYonetimSistemi\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
